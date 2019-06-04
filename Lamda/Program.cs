@@ -28,12 +28,13 @@ namespace Lamda
                 new Person(){ firstName = "Vasia", surname = "Pupkin", age = 35 },
                 new Person(){ firstName = "John", surname = "Doe", age = 25 },
                 new Person(){ firstName = "Masha", surname = "Pupkina", age = 20 },
-                new Person(){ firstName = "Ivan", surname = "Ivanovich", age = 40 }
+                new Person(){ firstName = "Ivan", surname = "Ivanovich", age = 40 },
+                new Person(){ firstName = "John", surname = "Avtor", age = 30 }
             };
 
             // UniversalSort.Sort(ref list, IntComparator);
-            UniversalSort.Sort(ref list, (_currentElement, _nextElement) => {
-                return ((Person)_currentElement).firstName.CompareTo(((Person)_nextElement).firstName);
+            UniversalSort.Sort(ref list, (_currentElement, _nextElement) => {return ((Person)_currentElement).firstName.CompareTo(((Person)_nextElement).firstName); },
+                (_currentElement, _nextElement) => {return ((Person)_currentElement).surname.CompareTo(((Person)_nextElement).surname);
             });
 
             foreach (var item in list)

@@ -10,7 +10,7 @@ namespace Lamda
     class UniversalSort
     {
         public delegate int Comparator(Object currentElement, Object nextElement);
-        public static void Sort(ref ArrayList _list, Comparator _comparator) {
+        public static void Sort(ref ArrayList _list, Comparator _comparator, Comparator _comparator1) {
 
             bool isSorted;
             do
@@ -24,6 +24,16 @@ namespace Lamda
                         _list[i] = _list[i + 1];
                         _list[i + 1] = tmp;
                         isSorted = false;
+                    }
+                    if (_comparator.Invoke(_list[i], _list[i + 1]) == 0)
+                    {
+
+                        if (_comparator1.Invoke(_list[i], _list[i + 1]) > 0)
+                        {
+                            Object tmp1 = _list[i];
+                            _list[i] = _list[i + 1];
+                            _list[i + 1] = tmp1;
+                        }
                     }
                 }
             } while (!isSorted);
